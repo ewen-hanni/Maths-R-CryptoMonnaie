@@ -34,8 +34,9 @@ head(timestamp)
 # Timestamp to date
 #mkt_data2$Date <- as.Date(as.POSIXct(timestamp, origin=“1970-01-01”))
 mkt_data <- lapply(mkt_data,nullToNA)
+#prends une demie éternité
 mkt_data$Date <- seq(lapply(mkt_data$Timestamp,TimestamptoDate))
-mkt_data <- do.call(rbind,lapply(mkt_dat,data.frame,stringsAsFactors=FALSE))
+mkt_data <- do.call(rbind,lapply(mkt_data,data.frame,stringsAsFactors=FALSE))
 #head(mkt_data)
 head(mkt_data$Timestamp)
 head(mkt_data$Date)
