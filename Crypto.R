@@ -19,7 +19,9 @@ is_date <- function(date) {
 TimestamptoDate <- function(x) {
   print(cat("TimestamptoDate 1 : " , x))
    
-  x[sapply(x,is_date)] <- (as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT"))
+  #x[sapply(x,is_date)]
+  # à fix
+  x<- as.Date(as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT"))
   
   print(cat("TimestamptoDate 2 : " , x))
   return(x)
