@@ -2,8 +2,13 @@ nullToNA <- function(x) {
   x[sapply(x, is.null)] <- NA
   return(x)
 }
+is_date <- function(date, format) {
+  formatted = try(as.Date(date, format), silent = TRUE)
+  return(DIZutils::equals2(as.character(formatted), date))
+}
 TimestamptoDate <- function(x) {
-  x[sapply(x, !(is.date))] <- (as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT"))
+  #x[sapply(x, !(is.date))] <- (as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT"))
+  x[sapply(x,is_date(x,"%d-%m-%Y"))] <- (as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT"))
   return(x)
   #head(as.POSIXct(as.numeric(as.character(try$time)), origin="1970-01-01", tz="GMT"))
 }
@@ -15,9 +20,9 @@ timestamp <- mkt_data$Timestamp
 head(timestamp)
 # Timestamp to date
 #mkt_data2$Date <- as.Date(as.POSIXct(timestamp, origin=“1970-01-01”))
-mkt_data2 <- lapply(mkt_data,nullToNA)
-mkt_data3 <- lapply(mkt_data2,TimestamptoDate)
-mkt_data3 <- do.call(rbind,lapply(mkt_data3,data.frame,stringsAsFactors=FALSE))
-head(mkt_data3)
-head(mkt_data3$Timestamp)
-head(mkt_data3$Date)
+mkt_data <- lapply(mkt_data,nullToNA)
+mkt_data$Date <- seq(lapply(mkt_data$Timestamp,TimestamptoDate))
+mkt_data <- do.call(rbind,lapply(mkt_dat,data.frame,stringsAsFactors=FALSE))
+#head(mkt_data)
+head(mkt_data$Timestamp)
+head(mkt_data$Date)
