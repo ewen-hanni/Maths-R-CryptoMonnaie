@@ -6,7 +6,7 @@ library(fpp2)
 library(astsa)
 library(plotly)
 library(DIZutils)
-windowsFonts(Georgia = windowsFont("Garamond"))
+windowsFonts(Garamond = windowsFont("Garamond"))
 
 nullToNA <- function(x) {
   x[sapply(x, is.null)] <- NA
