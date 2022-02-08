@@ -1,13 +1,37 @@
-
-print("////////////////////////////////////////////////////////////////////////////")
-
 library(tidyverse)
 library(lubridate)
 library(fpp2)
 library(astsa)
 library(plotly)
 library(DIZutils)
-windowsFonts(Garamond = windowsFont("Garamond"))
+
+os <- .Platform$OS.type
+
+# Sets up work directory, creates the directory if it doesn't exist
+# Do all OS affected operations here
+if(os == "unix") {
+  # unix like OS
+  wd_path <- "~/maths-crypto-wd"
+  print("Using unix based system")
+  if(!dir.exists(path = wd_path)) {
+    dir.create(path = wd_path)
+  }
+  setwd("~/maths-crypto-wd")
+} else if (os == "windows") {
+  # windows OS
+  print("Using windows")
+  windowsFonts(Garamond = windowsFont("Garamond"))
+  wd_path <- "%homedrive%%homepath%/maths-crypto-wd"
+  if(!dir.exists(path = wd_path)) {
+    dir.create(path = wd_path)
+  }
+  setwd(wd_path)
+} else { 
+  print("Could not set work directory") 
+}
+
+sprintf("wd = %s", getwd())
+
 
 nullToNA <- function(x) {
 x[sapply(x, is.null)] <- NA
@@ -27,8 +51,8 @@ x<- as.Date(as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT
 return(x)
 #head(as.POSIXct(as.numeric(as.character(try$time)), origin="1970-01-01", tz="GMT"))
 }
-setwd("C:/Users/Ewen/Downloads/maths R/crypto")
-getwd()
+#setwd("C:/Users/Ewen/Downloads/maths R/crypto")
+#getwd()
 #mkt_data <- read.csv("bitstampUSD_1-min_data_2012-01-01_to_2021-03-31.csv")
 mkt_data <- read.csv("coin_Bitcoin.csv")
 str(mkt_data)
