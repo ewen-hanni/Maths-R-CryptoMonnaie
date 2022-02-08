@@ -104,7 +104,7 @@ maxAvgBTCValue
 # Average BTC volume traded during 2016 to 2018 period
 print("Average BTC traded volume")
 df <- get2016to2018BTCData()
-avgBTCVol <- mean(df$volume)
+avgBTCVol <- mean(df$volume, na.rm=T)
 avgBTCVol
 
 # Sum of all volume traded including BTC and the rest during 2016 to 2018 period
@@ -116,7 +116,7 @@ tradedAllVol
 # Sum of all BTC volume traded during 2016 to 2018 period
 print("Sum of BTC volume traded")
 df <- get2016to2018BTCData()
-tradedBTCVol <- sum(df$volume)
+tradedBTCVol <- sum(df$volume, na.rm=T)
 tradedBTCVol
 
 # Sum of all non BTC volume traded during 2016-2018 period
