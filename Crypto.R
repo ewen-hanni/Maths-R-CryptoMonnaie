@@ -71,7 +71,7 @@ get2016to2018BTCData <- function() {
 #------------------------------------------------------------------------------#
 
 get2018Data <- function() {
-  df <- data[data$date > "2016-01-01" & data$date < "2018-01-01",]
+  df <- data[data$date > "2018-01-01" & data$date < "2019-01-01",]
   return(df)
 }
 
