@@ -185,6 +185,96 @@ percentageNonBTC2
 
 #------------------------------------------------------------------------------#
 
+
+# Get all the data from 2013-01-01 to 2018-01-01
+get2013to2018Data <- function() {
+  df2 <- data[data$date > "2013-01-01" & data$date < "2018-01-01",]
+  return(df2)
+}
+
+get2013to2018NonBTCData <- function() {
+  df2 <- get2013to2018Data()
+  nonBTCData2 = df2[df2$name != "Bitcoin",]
+  return(nonBTCData2)
+}
+
+get2013to2018BTCData <- function() {
+  df2 <- get2013to2018Data()
+  btcData2 <- df2[df2$name == "Bitcoin",]
+  return(btcData2)
+}
+#------------------------------------------------------------------------------#
+# 2013 to 2018
+# Average minimum value of BTC during the 2013 to 2018 period
+print("Avg min BTC value")
+df2 <- get2013to2018BTCData()
+minAvgBTCValue2 <- mean(df2$low, na.rm=T)
+minAvgBTCValue2
+
+# Average maximum value of BTC during the 2013 to 2018 period
+print("Avg max BTC value")
+df2 <- get2013to2018BTCData()
+maxAvgBTCValue2 <- mean(df2$high, na.rm=T)
+maxAvgBTCValue2
+
+
+# Average BTC volume traded during 2013 to 2018 period
+print("Average BTC traded volume")
+df2 <- get2013to2018BTCData()
+df2$volume<- setNAtoZero(df2$volume)
+avgBTCVol2 <- mean(df2$volume)
+avgBTCVol2
+
+# Sum of all volume traded including BTC and the rest during 2013 to 2018 period
+print("Sum of all volume traded")
+df2 <- get2013to2018Data()
+df2$volume<- setNAtoZero(df2$volume)
+tradedAllVol2 = sum(df2$volume, na.rm=T)
+tradedAllVol2
+
+# Sum of all BTC volume traded during 2013 to 2018 period
+print("Sum of BTC volume traded")
+df2 <- get2013to2018BTCData()
+df2$volume<- setNAtoZero(df2$volume)
+tradedBTCVol2 <- sum(df2$volume)
+tradedBTCVol2
+
+# Sum of all non BTC volume traded during 2013-2018 period
+print("Sum of non BTC volume traded")
+df2 <- get2013to2018NonBTCData()
+df2$volume<- setNAtoZero(df2$volume)
+tradedNonBTCVol2 <- sum(df2$volume, na.rm=T)
+tradedNonBTCVol2
+
+# Percentage of BTC volume traded on all volume traded during 2013 to 2018 period
+print("Percentage of BTC volume traded on all volume")
+percentageBTC2 <- tradedBTCVol/tradedAllVol
+percentageBTC2
+
+# Percentage of non BTC volume traded on all volume traded during 2013 to 2018 period
+print("Percentage of non BTC volume traded on all volume")
+percentageNonBTC2 <- tradedNonBTCVol/tradedAllVol
+percentageNonBTC2
+#------------------------------------------------------------------------------#
+
+
+
+#moyennes
+head(mean( mkt_data$open))
+head(mean( mkt_data$high))
+head(mean( mkt_data$low))
+head(mean( mkt_data$volume))
+
+#variance
+head(var( mkt_data$open))
+head(var( mkt_data$high))
+head(var( mkt_data$low))
+head(var( mkt_data$volume))
+
+
+
+#------------------------------------------------------------------------------#
+
 # Plot 1
 x = c(minAvgBTCValue1,maxAvgBTCValue1) 
 y = c(minAvgBTCValue2,maxAvgBTCValue2) 
