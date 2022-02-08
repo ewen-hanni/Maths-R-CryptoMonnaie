@@ -39,43 +39,8 @@ is_date <- function(date) {
   return(DIZutils::equals2(as.character(formatted), date))
 }
 
-dataAave <- read.csv(file = "coin_Aave.csv")
-dataAave <- lapply(dataAave, setNullToNA)
-
-dataBitcoin <- read.csv(file = "coin_Bitcoin.csv")
-dataBitcoin <- lapply(dataBitcoin, setNullToNA)
-
-dataChainLink <- read.csv(file = "coin_ChainLink.csv");
-dataChainLink <- lapply(dataChainLink, setNullToNA)
-
-dataCryptocomCoin <- read.csv(file = "coin_CryptocomCoin.csv");
-dataCryptocomCoin <- lapply(dataCryptocomCoin, setNullToNA)
-
-dataEOS = read.csv(file = "coin_EOS.csv");
-dataEOS <- lapply(dataEOS, setNullToNA)
-
-dataIota = read.csv(file = "coin_Iota.csv");
-dataIota <- lapply(dataIota, setNullToNA)
-
-# and the reste ...
-#dataMonero = read.csv(file = "coin_Monero.csv");
-#dataPolkadot = read.csv(file = "coin_Polkadot.csv");
-#dataStellar = read.csv(file = "coin_Stellar.csv");
-#dataTron = read.csv(file = "coin_Tron.csv");
-#dataUSDCoin = read.csv(file = "coin_USDCoin.csv");
-#dataXRP = read.csv(file = "coin_XRP.csv");
-#dataBitcoinHistorical = read.csv(file = "Bitcoin_Historical_Data.csv");
-#dataBinanceCoin = read.csv(file = "coin_BinanceCoin.csv");
-#dataCardano = read.csv(file = "coin_Cardano.csv");
-#dataCosmos = read.csv(file = "coin_Cosmos.csv");
-#dataDogecoin = read.csv(file = "coin_Dogecoin.csv");
-#dataEthereum = read.csv(file = "coin_Ethereum.csv");
-#dataLitecoin = read.csv(file = "coin_Litecoin.csv");
-#dataNEM = read.csv(file = "coin_NEM.csv");
-#dataSolana = read.csv(file = "coin_Solana.csv");
-#dataTether = read.csv(file = "coin_Tether.csv");
-#dataUniswap = read.csv(file = "coin_Uniswap.csv");
-#dataWrappedBitcoin = read.csv(file = "coin_WrappedBitcoin.csv");
+data <- read.csv(file = "crypto-markets.csv")
+data <- lapply(dataAave, setNullToNA)
 
 
 # Change a timestamp in seconds (unix Epoch) to a date
