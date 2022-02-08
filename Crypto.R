@@ -17,13 +17,12 @@ is_date <- function(date) {
   return(DIZutils::equals2(as.character(formatted), date))
 }
 TimestamptoDate <- function(x) {
-  print(cat("TimestamptoDate 1 : " , x))
-   
+  #print(cat("TimestamptoDate 1 : " , x))
   #x[sapply(x,is_date)]
   # à fix
   x<- as.Date(as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT"))
-  
-  print(cat("TimestamptoDate 2 : " , x))
+ # x<-dmy(x)
+  #print(cat("TimestamptoDate 2 : " , x))
   return(x)
   #head(as.POSIXct(as.numeric(as.character(try$time)), origin="1970-01-01", tz="GMT"))
 }
@@ -46,9 +45,10 @@ head(mkt_data$Date)
 
 # le tibble (≈petit df)
 bit_df = mkt_data %>%
-  mutate(Date = dmy(Date)) %>%
+  #mutate(Date = dmy(Date)) %>%
+  Date %>%
   mutate(Vol. = as.numeric(str_sub(Volume_(Currency), end = -2))*1000,
-         Change = as.numeric(str_sub(Weighted_Price, end = -2))) %>%
+         Weighted_Price = as.numeric(str_sub(Weighted_Price, end = -2))) %>%
   arrange(Date)
 
  #template des graph 
@@ -63,9 +63,20 @@ PlotTemplate = theme(
                  strip.background = element_rect(colour = "black", fill = "white"),
                  strip.text = element_text(face = 'bold')) 
 
+mkt_data <- do.call(rbind.data.frame, mkt_data)
 # affichage graph
-ggplotly(ggplot(bit_df, aes(Timestamp, Price)) + geom_line(col = 'orange') + 
-           labs(title = 'Bitcoin', x = '') +
-           scale_y_continuous(breaks = c(0, 5000, 10000, 15000, 20000), 
-                              labels = c('$0', '$5,000', '$10,000', '$15,000', '$20,000')) + PlotTemplate)
 
+ggplotly(mkt_data %>%
+           # à retirer pour un graph complet (long à charger)
+           filter(Timestamp >1385815860  %>%
+                    aes(Timestamp, Price)) + geom_line(col = 'orange') + 
+           labs(title = 'Bitcoin', x = '') +
+           scale_y_continuous(breaks = c(0, 5000, 10000, 15000), 
+                              labels = c('$0', '$5,000', '$10,000', '$15,000')) + PlotTemplate)
+
+#moyennes, à tester
+head(mean( mkt_data$Open))
+head(mean( mkt_data$High))
+head(mean( mkt_data$Low))
+head(mean( mkt_data$Close))
+head(mean( mkt_data$Weighted_Price))
