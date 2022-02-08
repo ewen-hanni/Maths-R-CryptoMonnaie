@@ -9,7 +9,7 @@ library(astsa)
 library(plotly)
 
 os <- .Platform$OS.type
-
+setwd("C:/Users/ewen/Documents/GitHub/Maths-R-CryptoMonnaie")
 wd_path = getwd()
 sprintf("wd = %s", getwd())
 
@@ -35,16 +35,17 @@ setNullToNA <- function(x) {
   return(x)
 }
 
-# Check if it's in date format (???)
-is_date <- function(date) {
-  formatted = try(as.Date(date, "%d-%m-%Y"), silent = TRUE)
-  return(DIZutils::equals2(as.character(formatted), date))
+# Change all NA values to 0
+setNAtoZero <- function(x) {
+  x[sapply(x, is.na)] <- 0
+  return(x)
 }
 
 #------------------------------------------------------------------------------#
 
 data <- read.csv(file = "crypto-markets.csv")
-#data <- lapply(data, setNullToNA)
+mkt_data <- read.csv(file = "crypto-markets.csv")
+
 data[data == 0] <- NA
 
 #------------------------------------------------------------------------------#
