@@ -7,7 +7,6 @@ library(lubridate)
 library(fpp2)
 library(astsa)
 library(plotly)
-library(DIZutils)
 
 os <- .Platform$OS.type
 
@@ -92,48 +91,48 @@ get2018NonBTCData <- function() {
 # Average minimum value of BTC during the 2016 to 2018 period
 print("Avg min BTC value")
 df <- get2016to2018BTCData()
-minAvgBTCValue <- mean(df$low, na.rm=T)
-minAvgBTCValue
+minAvgBTCValue1 <- mean(df$low, na.rm=T)
+minAvgBTCValue1
 
 # Average maximum value of BTC during the 2016 to 2018 period
 print("Avg max BTC value")
 df <- get2016to2018BTCData()
-maxAvgBTCValue <- mean(df$high, na.rm=T)
-maxAvgBTCValue
+maxAvgBTCValue1 <- mean(df$high, na.rm=T)
+maxAvgBTCValue1
 
 # Average BTC volume traded during 2016 to 2018 period
 print("Average BTC traded volume")
 df <- get2016to2018BTCData()
-avgBTCVol <- mean(df$volume, na.rm=T)
-avgBTCVol
+avgBTCVol1 <- mean(df$volume, na.rm=T)
+avgBTCVol1
 
 # Sum of all volume traded including BTC and the rest during 2016 to 2018 period
 print("Sum of all volume traded")
 df <- get2016to2018Data()
-tradedAllVol = sum(df$volume, na.rm=T)
-tradedAllVol
+tradedAllVol1 = sum(df$volume, na.rm=T)
+tradedAllVol1
 
 # Sum of all BTC volume traded during 2016 to 2018 period
 print("Sum of BTC volume traded")
 df <- get2016to2018BTCData()
-tradedBTCVol <- sum(df$volume, na.rm=T)
-tradedBTCVol
+tradedBTCVol1 <- sum(df$volume, na.rm=T)
+tradedBTCVol1
 
 # Sum of all non BTC volume traded during 2016-2018 period
 print("Sum of non BTC volume traded")
 df <- get2016to2018NonBTCData()
-tradedNonBTCVol <- sum(df$volume, na.rm=T)
-tradedNonBTCVol
+tradedNonBTCVol1 <- sum(df$volume, na.rm=T)
+tradedNonBTCVol1
 
 # Percentage of BTC volume traded on all volume traded during 2016 to 2018 period
 print("Percentage of BTC volume traded on all volume")
-percentageBTC <- tradedBTCVol/tradedAllVol
-percentageBTC
+percentageBTC1 <- tradedBTCVol1/tradedAllVol1
+percentageBTC1
 
 # Percentage of non BTC volume traded on all volume traded during 2016 to 2018 period
 print("Percentage of non BTC volume traded on all volume")
-percentageNonBTC <- tradedNonBTCVol/tradedAllVol
-percentageNonBTC
+percentageNonBTC1 <- tradedNonBTCVol1/tradedAllVol1
+percentageNonBTC1
 
 #------------------------------------------------------------------------------#
                               # 2018 ONLY
@@ -141,70 +140,58 @@ percentageNonBTC
 # Average minimum value of BTC during the 2018 to 2019 period
 print("Avg min BTC value")
 df <- get2018BTCData()
-minAvgBTCValue <- mean(df$low, na.rm=T)
-minAvgBTCValue
+minAvgBTCValue2 <- mean(df$low, na.rm=T)
+minAvgBTCValue2
 
 # Average maximum value of BTC during the 2018 to 2019 period
 print("Avg max BTC value")
 df <- get2018BTCData()
-maxAvgBTCValue <- mean(df$high, na.rm=T)
-maxAvgBTCValue
+maxAvgBTCValue2 <- mean(df$high, na.rm=T)
+maxAvgBTCValue2
 
 # Average BTC volume traded during the 2018 to 2019 period
 print("Average BTC traded volume")
 df <- get2018BTCData()
-avgBTCVol <- mean(df$volume, na.rm=T)
-avgBTCVol
+avgBTCVol2 <- mean(df$volume, na.rm=T)
+avgBTCVol2
 
 # Sum of all volume traded including BTC and the rest during 2018 to 2019 period
 print("Sum of all volume traded")
 df <- get2018Data()
-tradedAllVol = sum(df$volume, na.rm=T)
-tradedAllVol
+tradedAllVol2 = sum(df$volume, na.rm=T)
+tradedAllVol2
 
 # Sum of all BTC volume traded during 2018 to 2019 period
 print("Sum of BTC volume traded")
 df <- get2018BTCData()
-tradedBTCVol <- sum(df$volume, na.rm=T)
-tradedBTCVol
+tradedBTCVol2 <- sum(df$volume, na.rm=T)
+tradedBTCVol2
 
 # Sum of all non BTC volume traded during 2018-2019 period
 print("Sum of non BTC volume traded")
 df <- get2018NonBTCData()
-tradedNonBTCVol <- sum(df$volume, na.rm=T)
-tradedNonBTCVol
+tradedNonBTCVol2 <- sum(df$volume, na.rm=T)
+tradedNonBTCVol2
 
 # Percentage of BTC volume traded on all volume traded during 2018 to 2019 period
 print("Percentage of BTC volume traded on all volume")
-percentageBTC <- tradedBTCVol/tradedAllVol
-percentageBTC
+percentageBTC2 <- tradedBTCVol2/tradedAllVol2
+percentageBTC2
 
 # Percentage of non BTC volume traded on all volume traded during 2016 to 2018 period
 print("Percentage of non BTC volume traded on all volume")
-percentageNonBTC <- tradedNonBTCVol/tradedAllVol
-percentageNonBTC
+percentageNonBTC2 <- tradedNonBTCVol2/tradedAllVol2
+percentageNonBTC2
 
 #------------------------------------------------------------------------------#
 
-#template des graph
-PlotTemplate = theme(
-plot.title = element_text(hjust = .5, size = 28, colour = 'yellow'),
-text = element_text(family = 'Garamond'),
-axis.text = element_text(size = 12),
-axis.title = element_text(size = 20, family = 'Garamond', face = 'bold'),
-axis.line = element_line(colour = 'grey', size = 1),
-panel.grid = element_line(color = 'lightgrey'),
-panel.background = element_rect(fill = 'white'),
-strip.background = element_rect(colour = "black", fill = "white"),
-strip.text = element_text(face = 'bold'))
+# Plot 1
+x = c(minAvgBTCValue1,maxAvgBTCValue1) 
+y = c(minAvgBTCValue2,maxAvgBTCValue2) 
+x;y
+type = c("Avg min BTC value","Avg max BTC value") 
+moyennes = c(x,y) 
+moyennes = matrix(moyennes,nc=2, nr=2, byrow=T) # nc : nombre de tests - nr : nombre de barres accolées (ici par paire) 
+colnames(moyennes) = type 
+barplot(moyennes,beside=T) ; box() 
 
-data <- do.call(rbind.data.frame, data)
-# affichage graph
-
-ggplotly(data %>%
-# à retirer pour un graph complet (long à charger)
-filter(Timestamp >1385815860  %>%
-aes(Timestamp, Price)) + geom_line(col = 'orange') +
-labs(title = 'Bitcoin', x = '') +
-scale_y_continuous(breaks = c(0, 5000, 10000, 15000),
-labels = c('$0', '$5,000', '$10,000', '$15,000')) + PlotTemplate)
