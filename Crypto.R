@@ -186,47 +186,6 @@ percentageNonBTC
 
 #------------------------------------------------------------------------------#
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#data <- read.csv("bitstampUSD_1-min_data_2012-01-01_to_2021-03-31.csv")
-
-
-
-
-
-str(data)
-timestamp <- data$Timestamp
-head(timestamp)
-# Timestamp to date
-#dataBitcoin2$Date <- as.Date(as.POSIXct(timestamp, origin=“1970-01-01”))
-#prends une demie éternité :
-
-data$Date <- seq(lapply(data$Timestamp,setEpochToDate))
-data <- do.call(rbind,lapply(data,data.frame,stringsAsFactors=FALSE))
-#head(data)
-head(data$Timestamp)
-head(data$Date)
-
-# le tibble (≈petit df)
-bit_df = data %>%
-#mutate(Date = dmy(Date)) %>%
-Date %>%
-mutate(Vol. = as.numeric(str_sub(Volume_(Currency), end = -2))*1000,
-Weighted_Price = as.numeric(str_sub(Weighted_Price, end = -2))) %>%
-arrange(Date)
-
 #template des graph
 PlotTemplate = theme(
 plot.title = element_text(hjust = .5, size = 28, colour = 'yellow'),
@@ -249,10 +208,3 @@ aes(Timestamp, Price)) + geom_line(col = 'orange') +
 labs(title = 'Bitcoin', x = '') +
 scale_y_continuous(breaks = c(0, 5000, 10000, 15000),
 labels = c('$0', '$5,000', '$10,000', '$15,000')) + PlotTemplate)
-
-#moyennes, à tester
-head(mean( data$Open))
-head(mean( data$High))
-head(mean( data$Low))
-head(mean( data$Close))
-head(mean( data$Weighted_Price))
