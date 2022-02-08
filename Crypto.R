@@ -189,9 +189,43 @@ percentageNonBTC2
 x = c(minAvgBTCValue1,maxAvgBTCValue1) 
 y = c(minAvgBTCValue2,maxAvgBTCValue2) 
 x;y
-type = c("Avg min BTC value","Avg max BTC value") 
+type = c("Avg min BTC value (2016-2018)","Avg max BTC value (2018-2019)") 
 moyennes = c(x,y) 
-moyennes = matrix(moyennes,nc=2, nr=2, byrow=T) # nc : nombre de tests - nr : nombre de barres accolées (ici par paire) 
+# nc : nombre de tests
+# nr : nombre de barres accolées
+moyennes = matrix(moyennes,nc=2, nr=2, byrow=T)
 colnames(moyennes) = type 
 barplot(moyennes,beside=T) ; box() 
+
+# Plot 2
+x = c(avgBTCVol1) 
+y = c(avgBTCVol2) 
+x;y
+type = c("Avg BTC Volume Traded (2016-2018)","Avg BTC Volume Traded (2018-2019)") 
+moyennes = c(x,y) 
+# nc : nombre de tests
+# nr : nombre de barres accolées
+moyennes = matrix(moyennes,nc=1, nr=2, byrow=T)
+colnames(moyennes) = type 
+barplot(moyennes,beside=T) ; box() 
+
+# Plot 3
+x = c(percentageBTC1) ; y = c(percentageNonBTC1)
+type = c("% of BTC vs Others (2016-2018)") 
+moyennes = c(x,y) 
+# nc : nombre de tests
+# nr : nombre de barres accolées
+moyennes = matrix(moyennes,nc=1, nr=2, byrow=T)
+colnames(moyennes) = type 
+barplot(moyennes,beside=F,col=c("orange","yellow"),ylim=c(0,1)) ; box()
+
+# Plot 4
+x = c(percentageBTC2) ; y = c(percentageNonBTC2)
+type = c("% of BTC vs Others (2018-2019)") 
+moyennes = c(x,y) 
+# nc : nombre de tests
+# nr : nombre de barres accolées
+moyennes = matrix(moyennes,nc=1, nr=2, byrow=T)
+colnames(moyennes) = type 
+barplot(moyennes,beside=F,col=c("orange","yellow"),ylim=c(0,1)) ; box()
 
