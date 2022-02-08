@@ -42,17 +42,9 @@ is_date <- function(date) {
 data <- read.csv(file = "crypto-markets.csv")
 data <- lapply(data, setNullToNA)
 
-
-# Change a timestamp in seconds (unix Epoch) to a date
-setEpochToDate <- function(x) {
-#print(cat("setEpochToDate 1 : " , x))
-#x[sapply(x,is_date)]
-# à fix
-x<- as.Date(as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT"))
-# x<-dmy(x)
-#print(cat("setEpochToDate 2 : " , x))
-return(x)
-#head(as.POSIXct(as.numeric(as.character(try$time)), origin="1970-01-01", tz="GMT"))
+get2016to2018Data <- function() {
+  selectData = data[data$date > "2016-01-01" & data$date < "2018-01-01",]
+  return(selectData)
 }
 
 #data <- read.csv("bitstampUSD_1-min_data_2012-01-01_to_2021-03-31.csv")
@@ -62,7 +54,6 @@ timestamp <- data$Timestamp
 head(timestamp)
 # Timestamp to date
 #dataBitcoin2$Date <- as.Date(as.POSIXct(timestamp, origin=“1970-01-01”))
-data <- lapply(data,setNullToNA)
 #prends une demie éternité :
 
 data$Date <- seq(lapply(data$Timestamp,setEpochToDate))
