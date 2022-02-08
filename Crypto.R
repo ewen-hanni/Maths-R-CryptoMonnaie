@@ -1,3 +1,7 @@
+# On Mac :
+# Be sure to execute first the following brew CLI command
+# brew install openssl
+
 library(tidyverse)
 library(lubridate)
 library(fpp2)
@@ -7,47 +11,51 @@ library(DIZutils)
 
 os <- .Platform$OS.type
 
-# Sets up work directory, creates the directory if it doesn't exist
+wd_path = getwd()
+sprintf("wd = %s", getwd())
+
 # Do all OS affected operations here
 if(os == "unix") {
   # unix like OS
-  wd_path <- "~/maths-crypto-wd"
-  print("Using unix based system")
-  if(!dir.exists(path = wd_path)) {
-    dir.create(path = wd_path)
-  }
-  setwd("~/maths-crypto-wd")
+
 } else if (os == "windows") {
   # windows OS
   print("Using windows")
   windowsFonts(Garamond = windowsFont("Garamond"))
-  wd_path <- "%homedrive%%homepath%/maths-crypto-wd"
-  if(!dir.exists(path = wd_path)) {
-    dir.create(path = wd_path)
-  }
-  setwd(wd_path)
+  
 } else { 
-  print("Could not set work directory") 
+  print("Not a supported OS") 
 }
 
-sprintf("wd = %s", getwd())
+loadDataFromCSVFiles<- function(fileName) {
+  dataAave = read.csv(file = "coin_Aave.csv")
+  dataBitcoin = read.csv(file = "coin_Bitcoin.csv")
+  dataChainLink = read.csv(file = "coin_ChainLink.csv")
+  dataCryptocomCoin = read.csv(file = "coin_CryptocomCoin.csv")
+  # to do
+  
+}
 
-
-nullToNA <- function(x) {
+# Change all NULL values to NA
+setNullToNA <- function(x) {
 x[sapply(x, is.null)] <- NA
 return(x)
 }
+
+# Check if it's in date format (???)
 is_date <- function(date) {
 formatted = try(as.Date(date, "%d-%m-%Y"), silent = TRUE)
 return(DIZutils::equals2(as.character(formatted), date))
 }
-TimestamptoDate <- function(x) {
-#print(cat("TimestamptoDate 1 : " , x))
+
+# Change a timestamp in seconds (unix Epoch) to a date
+setEpochToDate <- function(x) {
+#print(cat("setEpochToDate 1 : " , x))
 #x[sapply(x,is_date)]
 # à fix
 x<- as.Date(as.POSIXct(as.numeric(as.character(x)), origin="1970-01-01", tz="GMT"))
 # x<-dmy(x)
-#print(cat("TimestamptoDate 2 : " , x))
+#print(cat("setEpochToDate 2 : " , x))
 return(x)
 #head(as.POSIXct(as.numeric(as.character(try$time)), origin="1970-01-01", tz="GMT"))
 }
@@ -60,10 +68,10 @@ timestamp <- mkt_data$Timestamp
 head(timestamp)
 # Timestamp to date
 #mkt_data2$Date <- as.Date(as.POSIXct(timestamp, origin=“1970-01-01”))
-mkt_data <- lapply(mkt_data,nullToNA)
+mkt_data <- lapply(mkt_data,setNullToNA)
 #prends une demie éternité :
 
-mkt_data$Date <- seq(lapply(mkt_data$Timestamp,TimestamptoDate))
+mkt_data$Date <- seq(lapply(mkt_data$Timestamp,setEpochToDate))
 mkt_data <- do.call(rbind,lapply(mkt_data,data.frame,stringsAsFactors=FALSE))
 #head(mkt_data)
 head(mkt_data$Timestamp)
