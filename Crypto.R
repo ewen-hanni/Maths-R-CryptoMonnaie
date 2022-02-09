@@ -249,12 +249,12 @@ tradedNonBTCVol3
 
 # Percentage of BTC volume traded on all volume traded during 2013 to 2018 period
 print("Percentage of BTC volume traded on all volume")
-percentageBTC3 <- tradedBTCVol/tradedAllVol
+percentageBTC3 <- tradedBTCVol3/tradedAllVol3
 percentageBTC3
 
 # Percentage of non BTC volume traded on all volume traded during 2013 to 2018 period
 print("Percentage of non BTC volume traded on all volume")
-percentageNonBTC3 <- tradedNonBTCVol/tradedAllVol
+percentageNonBTC3 <- tradedNonBTCVol3/tradedAllVol3
 percentageNonBTC3
 #------------------------------------------------------------------------------#
 
