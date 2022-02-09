@@ -9,7 +9,7 @@ library(astsa)
 library(plotly)
 
 os <- .Platform$OS.type
-setwd("C:/Users/ewen/Documents/GitHub/Maths-R-CryptoMonnaie")
+#setwd("C:/Users/ewen/Documents/GitHub/Maths-R-CryptoMonnaie")
 wd_path = getwd()
 sprintf("wd = %s", getwd())
 
