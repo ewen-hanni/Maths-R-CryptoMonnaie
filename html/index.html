@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title> Analyse des tendances des crypto-monnaies </title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/jquery.scrollgress.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/jquery.slidertron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+	<body>
+		<!-- Main -->
+			<section id="main" class="wrapper style1">
+				<header class="major">
+					<h2> Analyse des tendances des crypto-monnaies </h2>
+				</header>
+				<div class="container">
+					<img src="images/btc-logo.png" alt="Girl in a jacket" width="1100" height="250"><br><br>
+					<!-- Content -->
+						<section id="content">
+							<h3> Présentation </h3>
+							<p>Le 9 janvier 2009 le Bitcoin a vu le jour, au depart une simple expérimentation dont 
+								la valeur initiale unitaire pouvait être considérée comme insignifiante, aujord'hui 
+								il est sujet a spéculation de la part de personne de tout horizons, aussi bien des 
+								entités physiques que morales comme des entreprises. Même des pays comme le Salvadore
+								ont fait le pari du Bitcoin avec plus ou moins de succès.
+							</p>
+							<p>
+								Losque le Bitcoin a été intoduit sa valeur unitaire sa valeur unitaire était de 0,001 $ mais suite aux 
+       							années et à la spéculation sa valeur a explosé. Le même Bitcoin qui valait en 2009 0,001 $ a une valeur 
+        						aujord'hui de 44.143,98 $ (09/02/2022). Alors quels ont été les évolutions de sa valeur au cours du temps,
+        						en quelle année sa valeur à vraiment explosé ?
+							</p>
+							<p>
+								A travers une étude statistique on va repondre à ces questions.
+							</p>
+						</section>
+						<section id="content">
+							<h3> Notre équipe</h3>
+							<p>Notre équipe est composé de moi-même <strong>Ivo COSTA CUNHA</strong>, <strong>Prince Divin MACKPAYEN</strong> 
+								, <strong>Ewen HANNI </strong> et <strong>Axel JEAN PETEZ</strong>.</p>
+        						
+							<li>Je me suis moi-même occupé de la rédaction de cette page ainsi que du code R qui a servi à analyser les données.</li>
+       						<li>Prince était reponsable de la décoration de cette page et a également participé au code R.</li>
+							<li>Ewen a participé au code R et a été reponsable du script de présentation du projet. </li>
+							<li>Axel a participé principalement au code R.</li><br>							
+						</section>
+
+						<section id="content">
+							<h3> Les données utilisées </h3>
+							<p> 
+								On a utilisé un	ensemble de données qui se trouve sur le site Kaggle. Kaggle propose après une inscription un 
+								accès à des données open source qui peuvent être utilisés dans n'importe quel projet. </p>
+							<p>
+								Nous avons utilisé le dataset suivant <a href="https://www.kaggle.com/jessevent/all-crypto-currencies">https://www.kaggle.com/jessevent/all-crypto-currencies</a>.
+							</p>
+							<p> Nous avons utilisé un dataset qui présente l'évolution de toutes les crypto-currencies à travers 
+								les données suivantes :
+							</p>
+
+							<li> Le prix à l'ouverture des marchés "#open" </li>
+							<li> Le prix le plus haut atteint sur la période "#high" </li> 
+							<li> Le prix le plus bas atteint sur la periode "#low" </li>
+							<li> Le prix a la fermeture des marchés "#close" </li>
+							<li> Le volume échangé sur la période "#volume</li><br>
+
+							<p> Les données sont présentés pour toutes les crypto-currencies existantes au moment de la prise des donnés, 
+								et pour chaque jour. Les données  existent du 24/08/2013 au 30/11/2018.
+							</p>
+
+							<p> Nous avons utilisé le language <a href="https://www.r-project.org">R</a> qui est spécialé dans l'analyse de données à travers des facilités est 
+								des fonctions interressantes "build-in", avec son meilleur ID trouvable <a href="https://www.rstudio.com">
+								RStudio</a> qui facilite l'affichage des données et le codage en général.
+							</p>
+						</section>
+
+						<section id="content">
+							<h3> La méthodologie utilisée </h3>
+							<p> La méthodologie utilisée pour notre travail au niveau de l'équipe est le scrum agile, c'est une méthode agile de gestion de projets 
+								informatiques privilégiant la communication, et facilitant les réorientations opportunes, mieux adapté 
+								pour notre équipe et le temps qui nous était imparti, nous avons mis en place plusieurs sprints et un système 
+								rotatif des tâches où chacun des membres de l'équipe pouvait passé de la veille à la conception et les tests 
+								sur différents systèmes d'exploitation.
+							</p>
+
+							<p> Nous avons utilisé GitHub pour stocker les données de notre projet en ligne et afin de pouvoir en gérer le 
+								differentes version. <br> Voici notre GitHub pour ce projet : <a href="https://github.com/ewen-hanni/Maths-R-CryptoMonnaie"> 
+								lien Github</a>. </p>
+						</section>
+
+						<section id="content">
+							<h3> Les résultats obtenus </h3>
+							<p>Tout d'abord il est important de noter que notre étude commence en 2016 où le prix du Bitcoin a déja
+								fortement augmenté par rapport a son prix à sa conception. 2016 est aussi l'année ou le Bitcoin à connu
+								son grand boom au niveau de la valeur ce qui a généré une certaine "hype" pour celui-ci.
+							</p> 
+							<p><img src="images/min-max-btc.png" align:"middle" width="500" height="400"><img src="images/vol-traded.png" align:"middle" width="500" height="400"></p>
+							<p>En noir sont les données de 2016 à 2018 et en gris celles de 2018 à 2019.</p>
+							<p> Quand on compare les données il n'y a pas d'erreur possible.</p>
+							<p>Le cours minimum moyen à plus que triplé de la période 2016-2018 à la période 2018-2019 avec des valeurs 
+								respectives de environ 2186$ à 7691$ environ. Le cours maximum moyen à également suivi la même progression
+								avec en 2016-2018 une valeur moyenne de 2360$ à 8147$ en 2018-2019. On y voit non seulement une nette progression
+								mais aussi que l'écard en le minimum et le maximum à augmenté, peut être une hausse de la spéculation.
+							</p>
+							<p>On pourrait y voir seulement une augmentation de la valeur du Bitcoin dû à la spéculation, mais le Bitcoin est-il aussi
+								plus utilisé en général ?
+							</p> 
+							<p> Bien les statistiques montent que oui. On est passé de 1.234.463.716 transactions moyennes par jour sur la période de 
+								2016 à 2018 à 6.108.525.649 sur la période de 2018 à 2019, une progression de plus de 500%.</p>
+							<p> Donc le Bitcoin est bien à la fois plus utilisé et à une valeur plus forte. Mais qu'en est-t'il des autres crypto-monnaies ?
+								S'agit t'il d'un phenomère reduit au Bitcoin ou tout les crypto-monnaies sont affectés ? </p>
+
+							<p><img src="images/perc-2016.png" align:"middle" width="500" height="500"><img src="images/perc-2018.png" align:"middle" width="500" height="500"></p>
+
+							<p>Dans ces images représentant le pourcentage (%) représenté de toutes les transactions faites en moyenne sur le périodes mentionnées.</p>
+							<p>Le Bitcoin est représenté en orange et toutes les autres crypto-monnaies en jaune.</p>
+							<p> On voit donc que le Bitcoin représentait sur la période de 2016 à 2018 42,63% de toutes les transactions contre 
+							57,36% pour toutes les autres crypto-monnaies. On en déduit donc que le Bitcoin bien que majoritaire n'était pas seul 
+							sur le marché même si il avait la position majoritaire. On voit que en en 2018-2019 le Bitcoin perd des parts
+							de marché avec pour lui 33,53% et pour le reste des crypto-monnaies 66,47%. On y voit donc un déclin du Bitcoin. 
+							Cependant comme le marché a gagné en valeur malgré le déclin le Bitcoin est plus fort sur la second période que la première.
+						</p>
+						
+
+							<p>Le test de corrélation est utilisé pour évaluer une association (dépendance) entre deux variables.
+							Le calcul du coefficient de corrélation peut être effectué en utilisant différentes méthodes.
+							Il existe la corrélation r de pearson, la corrélation tau de Kendall et le coefficient de corrélation rho de Spearman..</p>
+							
+							<p>Nous avons calculé le coefficient de corrélation de plusieurs devises selon plusieurs méthodes pour comparer.</p>
+							
+							<p>Test de corrélmation du Bitcoin avec l'Ethereum et du Bitcoin le tezos selon la méthode de Kenbdall.</p>
+							<p><img src="images/correlation_eth_btc_kendall.PNG" align:"middle" width="900" height="auto"></p>
+							
+							<p>Test de corrélmation du Bitcoin avec l'Ethereum et du Bitcoin le tezos selon la méthode de Spearman.</p>
+							<p><img src="images/correlation_eth_btc_spearman.PNG" align:"middle" width="900" height="auto"></p>
+							
+							<p>Test de corrélmation du Bitcoin avec l'Ethereum et du Bitcoin le tezos selon la méthode de Pearson.</p>
+							<p><img src="images/correlation_eth_btc_pearson.PNG" align:"middle" width="900" height="auto"></p>
+						</p>
+						
+						</section>
+
+				</div>
+			</section>
+			
+		<!-- Footer -->
+			<footer id="footer">
+				<h4> Par Ivo COSTA CUNHA, Ewen HANNI, Prince Divin MACKPAYEN et Axel JEAN PETEZ </h4>	
+				</span>
+			</footer>
+
+	<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6dab2b5caa8641fd',m:'TpASjhQNiHNtjNvdwF.P3B3jaddZk3nlBfaD4gq8TP4-1644389488-0-AVCk3O3ICLbI+mImj26p6OFMqBAovI35GFSGNzvV+vd1ZXtBPzAr0zKp6AAP4Ndsx/lN/0mBtfc64vyDzVBUtXV7ZDpqyWGFmT/KM53xUK7TEa6e5U7ujff5ShEVg8EP1EJ0m7kdHuqbN3+QRFVUP8svCCp4F4kGT9viS9V/ySemIILuICdJcFxhNDpbb2MGIw==',s:[0xfdacacf8bf,0x01ffe87b08],}})();</script></body>
+</html>

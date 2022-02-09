@@ -474,13 +474,14 @@ moyennes = matrix(moyennes,nc=1, nr=2, byrow=T)
 colnames(moyennes) = type 
 barplot(moyennes,beside=T) ; box() 
 
+#------------------------------------------------------------------------------#
+
 df4 <- get2016to2018ETHData()
 df5 <- get2016to2018TezData()
 df <- get2016to2018BTCData()
 head(df)
 str(df$high)
 str(df4$high)
-
 
 m1<-matrix(as.numeric(df$high),730)
 m2<-matrix(as.numeric(df4$high),730)
@@ -493,30 +494,26 @@ m6<-matrix(as.numeric(df5$high),91)
 head(m1)
 head(m2)
 
-
-# coefficient de correlation entre eth et btc avec la méthode spearman :
+# coefficient de correlation entre eth et btc avec la mÃ©thode spearman :
 print(cor(m1, m2,method="spearman"))
 
 
-# coefficient de correlation entre btc et tezos  avec la méthode spearman :
+# coefficient de correlation entre btc et tezos  avec la mÃ©thode spearman :
 print(cor(m3, m4,method="spearman"))
 
-# coefficient de correlation entre btc et litecoin  avec la méthode spearman :
+# coefficient de correlation entre btc et litecoin  avec la mÃ©thode spearman :
 print(cor(m5, m6,method="spearman"))
 
-
-# coefficient de correlation entre eth et btc avec la méthode Kendall :
+# coefficient de correlation entre eth et btc avec la mÃ©thode Kendall :
 print(cor(m1, m2,method="kendall"))
 
-
-# coefficient de correlation entre eth et tezos  avec la méthode kendall :
+# coefficient de correlation entre eth et tezos  avec la mÃ©thode kendall :
 print(cor(m3, m4,method="kendall"))
 
-# coefficient de correlation entre eth et btc avec la méthode pearson :
+# coefficient de correlation entre eth et btc avec la mÃ©thode pearson :
 print(cor(m1, m2,method="pearson"))
 
-
-# coefficient de correlation entre eth et tezos  avec la méthode pearson :
+# coefficient de correlation entre eth et tezos  avec la mÃ©thode pearson :
 print(cor(m3, m4,method="pearson"))
 
 
