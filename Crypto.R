@@ -8,6 +8,7 @@ library(fpp2)
 library(astsa)
 library(plotly)
 
+
 os <- .Platform$OS.type
 #setwd("C:/Users/ewen/Documents/GitHub/Maths-R-CryptoMonnaie")
 wd_path = getwd()
@@ -45,8 +46,10 @@ setNAtoZero <- function(x) {
 
 data <- read.csv(file = "crypto-markets.csv")
 mkt_data <- read.csv(file = "crypto-markets.csv")
+data2 =  read.csv(file = "ETH-USD.csv")
 
 data[data == 0] <- NA
+data2[data2 == 0] <- NA
 
 #------------------------------------------------------------------------------#
 
@@ -258,6 +261,71 @@ percentageNonBTC3 <- tradedNonBTCVol3/tradedAllVol3
 percentageNonBTC3
 #------------------------------------------------------------------------------#
 
+#ETH
+# Get all the data from 2016-01-01 to 2018-01-01
+get2016to2018DataETH <- function() {
+  df4 <- data[data$date > "2016-01-01" & data$date < "2018-01-01",]
+  return(df4)
+}
+
+
+get2016to2018ETHData <- function() {
+  df4 <- get2016to2018DataETH()
+  str(df4)
+  ethData <- df4[df4$name == "Ethereum",]
+  return(ethData)
+}
+
+#------------------------------------------------------------------------------#
+
+get2018DataEth <- function() {
+  df4 <- data[data$date > "2018-01-01" & data$date < "2019-01-01",]
+  return(df4)
+}
+
+get2018EThData <- function() {
+  df4 <- get2018DataEth()
+  ethData <- df4[df4$name == "Ethereum",]
+  return(ethData)
+}
+
+
+#------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+
+#Tezos
+# Get all the data from 2016-01-01 to 2018-01-01
+get2016to2018DataTez <- function() {
+  df5 <- data[data$date > "2016-01-01" & data$date < "2018-01-01",]
+  return(df5)
+}
+
+
+get2016to2018TezData <- function() {
+  df5 <- get2016to2018DataETH()
+  str(df5)
+  ethData <- df5[df5$name == "Tezos",]
+  return(ethData)
+}
+
+#------------------------------------------------------------------------------#
+
+get2018DataTez <- function() {
+  df5 <- data[data$date > "2018-01-01" & data$date < "2019-01-01",]
+  return(df5)
+}
+
+get2018EThData <- function() {
+  df5 <- get2018DataTez()
+  ethData <- df5[df5$name == "Tezos",]
+  return(ethData)
+}
+
+
+#------------------------------------------------------------------------------#
+
+
+
 
 
 #moyennes
@@ -344,6 +412,42 @@ moyennes = matrix(moyennes,nc=1, nr=2, byrow=T)
 colnames(moyennes) = type 
 barplot(moyennes,beside=T) ; box() 
 
+df4 <- get2016to2018ETHData()
+df5 <- get2016to2018TezData()
+df <- get2016to2018BTCData()
+head(df)
+str(df$high)
+str(df4$high)
+
+
+m1<-matrix(as.numeric(df$high),730)
+m2<-matrix(as.numeric(df4$high),730)
+m3<-matrix(as.numeric(df$high),91)
+m4<-matrix(as.numeric(df5$high),91)
+head(m1)
+head(m2)
+
+
+# coefficient de correlation entre eth et btc avec la méthode spearman :
+print(cor(m1, m2,method="spearman"))
+
+
+# coefficient de correlation entre eth et tezos  avec la méthode spearman :
+print(cor(m3, m4,method="spearman"))
+
+# coefficient de correlation entre eth et btc avec la méthode Kendall :
+print(cor(m1, m2,method="kendall"))
+
+
+# coefficient de correlation entre eth et tezos  avec la méthode kendall :
+print(cor(m3, m4,method="kendall"))
+
+# coefficient de correlation entre eth et btc avec la méthode pearson :
+print(cor(m1, m2,method="pearson"))
+
+
+# coefficient de correlation entre eth et tezos  avec la méthode pearson :
+print(cor(m3, m4,method="pearson"))
 
 
 
