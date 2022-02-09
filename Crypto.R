@@ -209,53 +209,53 @@ get2013to2018BTCData <- function() {
 # Average minimum value of BTC during the 2013 to 2018 period
 print("Avg min BTC value")
 df2 <- get2013to2018BTCData()
-minAvgBTCValue2 <- mean(df2$low, na.rm=T)
-minAvgBTCValue2
+minAvgBTCValue3 <- mean(df2$low, na.rm=T)
+minAvgBTCValue3
 
 # Average maximum value of BTC during the 2013 to 2018 period
 print("Avg max BTC value")
 df2 <- get2013to2018BTCData()
-maxAvgBTCValue2 <- mean(df2$high, na.rm=T)
-maxAvgBTCValue2
+maxAvgBTCValue3 <- mean(df2$high, na.rm=T)
+maxAvgBTCValue3
 
 
 # Average BTC volume traded during 2013 to 2018 period
 print("Average BTC traded volume")
 df2 <- get2013to2018BTCData()
 df2$volume<- setNAtoZero(df2$volume)
-avgBTCVol2 <- mean(df2$volume)
-avgBTCVol2
+avgBTCVol3 <- mean(df2$volume)
+avgBTCVol3
 
 # Sum of all volume traded including BTC and the rest during 2013 to 2018 period
 print("Sum of all volume traded")
 df2 <- get2013to2018Data()
 df2$volume<- setNAtoZero(df2$volume)
-tradedAllVol2 = sum(df2$volume, na.rm=T)
-tradedAllVol2
+tradedAllVol3 = sum(df2$volume, na.rm=T)
+tradedAllVol3
 
 # Sum of all BTC volume traded during 2013 to 2018 period
 print("Sum of BTC volume traded")
 df2 <- get2013to2018BTCData()
 df2$volume<- setNAtoZero(df2$volume)
-tradedBTCVol2 <- sum(df2$volume)
-tradedBTCVol2
+tradedBTCVol3 <- sum(df2$volume)
+tradedBTCVol3
 
 # Sum of all non BTC volume traded during 2013-2018 period
 print("Sum of non BTC volume traded")
 df2 <- get2013to2018NonBTCData()
 df2$volume<- setNAtoZero(df2$volume)
-tradedNonBTCVol2 <- sum(df2$volume, na.rm=T)
-tradedNonBTCVol2
+tradedNonBTCVol3 <- sum(df2$volume, na.rm=T)
+tradedNonBTCVol3
 
 # Percentage of BTC volume traded on all volume traded during 2013 to 2018 period
 print("Percentage of BTC volume traded on all volume")
-percentageBTC2 <- tradedBTCVol/tradedAllVol
-percentageBTC2
+percentageBTC3 <- tradedBTCVol/tradedAllVol
+percentageBTC3
 
 # Percentage of non BTC volume traded on all volume traded during 2013 to 2018 period
 print("Percentage of non BTC volume traded on all volume")
-percentageNonBTC2 <- tradedNonBTCVol/tradedAllVol
-percentageNonBTC2
+percentageNonBTC3 <- tradedNonBTCVol/tradedAllVol
+percentageNonBTC3
 #------------------------------------------------------------------------------#
 
 
@@ -319,4 +319,32 @@ moyennes = c(x,y)
 moyennes = matrix(moyennes,nc=1, nr=2, byrow=T)
 colnames(moyennes) = type 
 barplot(moyennes,beside=F,col=c("orange","yellow"),ylim=c(0,1)) ; box()
+
+# Plot 5
+x = c(minAvgBTCValue1,maxAvgBTCValue1) 
+y = c(minAvgBTCValue3,maxAvgBTCValue3) 
+x;y
+type = c("Avg min BTC value (2013-2018)","Avg max BTC value (2018-2019)") 
+moyennes = c(x,y) 
+# nc : nombre de tests
+# nr : nombre de barres accolées
+moyennes = matrix(moyennes,nc=2, nr=2, byrow=T)
+colnames(moyennes) = type 
+barplot(moyennes,beside=T) ; box() 
+
+# Plot 6
+x = c(avgBTCVol1) 
+y = c(avgBTCVol3) 
+x;y
+type = c("Avg BTC Volume Traded (2013-2018)","Avg BTC Volume Traded (2018-2019)") 
+moyennes = c(x,y) 
+# nc : nombre de tests
+# nr : nombre de barres accolées
+moyennes = matrix(moyennes,nc=1, nr=2, byrow=T)
+colnames(moyennes) = type 
+barplot(moyennes,beside=T) ; box() 
+
+
+
+
 
